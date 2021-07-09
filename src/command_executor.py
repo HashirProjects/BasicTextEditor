@@ -66,6 +66,12 @@ class EditFile:
 
         print("the opened file's contents are:\n\n" + self.fileContent)
 
+    def edit(self):
+        #completely rewrite the file
+        pass
+
+    def editLine(self, lineNumber):
+        #change a single line
 
 
  
