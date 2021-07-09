@@ -44,7 +44,11 @@ class EditFile:
             print("No file is currently open.")
             return
 
+        with open(self.filepath, "w") as f:
+            f.write(self.fileContent)
+
         self.fileContent = ""
+        self.filepath = ""
         print("Closed File.")
 
 
