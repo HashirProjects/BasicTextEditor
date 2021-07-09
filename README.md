@@ -1,0 +1,1 @@
+A very basic text editior, mode to help learn how to use os module in python.
