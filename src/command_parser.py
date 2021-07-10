@@ -33,6 +33,13 @@ class CommandParser:
 
                 self.command_executor.open(command[1])
 
+            elif command[0].upper() == "EDIT_LINE":
+
+                if len(command) != 2:
+                    raise Exception("Please enter EDIT_LINE followed by the line number.")
+
+                self.command_executor.editLine(int(command[1]))
+
             elif command[0].upper() == "MOVE":
 
                 if len(command) != 2:
