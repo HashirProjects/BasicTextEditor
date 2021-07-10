@@ -11,8 +11,7 @@ class EditFile:
         def findAll(filepath):
             for dir in os.listdir(filepath):
                 if dir.find(".") != -1:
-                    if dir.find(".txt") != -1:
-                        print("  "+dir)
+                    print("  "+dir)
                 else:
                     print(f"\nIn sub-directory {dir} (path {os.path.join(filepath, dir)}), the following was found\n")
                     findAll(os.path.join(filepath, dir))
@@ -68,7 +67,23 @@ class EditFile:
             print("No file is currently open.")
             return
 
-        print("the opened file's contents are:\n\n" + self.fileContent)
+        print("the opened file's contents are:\n\n")
+
+        fileByLine = self.fileContent.split("\n")
+
+        for i in range(len(fileByLine)):
+            print(f"{i}) {fileByLine[i]}")
+
+    def editLine(self, lineNumber):
+        if self.fileContent == "":
+            print("No file is currently open.")
+            return
+
+        fileByLine = self.fileContent.split("\n")
+
+        fileByLine[lineNumber] = input("Write the new contents of the line below:\n")
+
+        self.fileContent = "\n".join(fileByLine)
 
 
 
