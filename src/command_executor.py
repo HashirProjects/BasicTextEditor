@@ -8,16 +8,18 @@ class EditFile:
     def findAllTextFiles(self, dirpath):
         import os
 
-        def findAll(filepath):
+        def findAll(filepath, indentLvl = 1):
             for dir in os.listdir(filepath):
-                if dir.find(".") != -1:
-                    print("  "+dir)
-                else:
-                    print(f"\nIn sub-directory {dir} (path {os.path.join(filepath, dir)}), the following was found\n")
-                    findAll(os.path.join(filepath, dir))
-                    print(f"\n(end of files found in {dir} and sub-directories)\n")
+                try:
+                    if dir.find(".") != -1:
+                        print("    "*(indentLvl)+dir)
+                    else:
+                        print("    "*indentLvl + f"In sub-directory {dir} (path {os.path.join(filepath, dir)}), the following was found\n")
+                        findAll(os.path.join(filepath, dir), indentLvl + 1)
+                except:
+                    pass
 
-        print(f"The following was found in the directory at {dirpath} and it's sub-directories:\n")
+        print(f"\nThe following was found in the directory at {dirpath} and it's sub-directories:\n")
 
         findAll(dirpath)
 
